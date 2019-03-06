@@ -1,9 +1,9 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
-    name='revo_utils',
-    version='0.1.0',
-    packages='revo_utils',
+    name="revo_utils",
+    version='0.1.1',
+    packages=find_packages(),
     license='gpl-3.0',
     description='A collection of utilities which we use in all our projects',
     author='Robert Binneman',
