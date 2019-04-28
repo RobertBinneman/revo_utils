@@ -1,16 +1,18 @@
-from setuptools import setup, find_packages
+import setuptools
 
-setup(
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
     name="revo_utils",
-    version='0.1.1',
-    packages=find_packages(),
-    license='gpl-3.0',
+    version="1.20190428.1",
+	author='Robert Binneman',
+    author_email="robert@revo.in.na",
     description='A collection of utilities which we use in all our projects',
-    author='Robert Binneman',
-    author_email='r.binneman@gmail.com',
+	long_description=long_description,
+    long_description_content_type="text/markdown",
     url='https://github.com/RobertBinneman/revo_utils/',
-    download_url='https://github.com/RobertBinneman/revo_utils/archive/0.1.0.tar.gz',
-    keywords=['UTILITIES'],
+    packages=setuptools.find_packages(),
     install_requires=[
         'cryptography',
         'djangorestframework',
@@ -18,12 +20,8 @@ setup(
         'python-dateutil'
     ],
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        '3 - Alpha',
-        'Intended Audience :: Developers',  # Define that your audience are developers
-        'Topic :: Software Development :: Libraries',
-        'License :: OSI Approved :: GNU Lesser General Public License v3.0',  # Again, pick a license
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
+        "Programming Language :: Python :: 3.6",
+        "License :: Other :: Proprietary License",
+        "Operating System :: OS Independent",
     ],
 )
