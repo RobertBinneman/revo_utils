@@ -25,7 +25,7 @@ class WebpackLoader(object):
 
     def _load_assets(self):
         try:
-            stats_path = os.path.join(apps.get_app_config('ar').path, 'fe/webpack-stats.json')
+            stats_path = os.path.join(apps.get_app_config(self.name).path, 'fe/webpack-stats.json')
             with open(stats_path, encoding="utf-8") as f:
                 return json.load(f)
         except IOError:

@@ -214,7 +214,7 @@ def get_as_tags(bundle_name, extension=None, app=None, attrs=''):
 
     :param bundle_name: The name of the bundle
     :param extension: (optional) filter by extension, eg. 'js' or 'css'
-    :param config: (optional) the name of the configuration
+    :param app: optional the name of the application
     :return: a list of formatted tags as strings
     '''
 
