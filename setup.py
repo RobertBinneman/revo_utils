@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="revo_utils",
-    version="1.20190428.1",
+    version="1.20190430.1",
 	author='Robert Binneman',
     author_email="robert@revo.in.na",
     description='A collection of utilities which we use in all our projects',
