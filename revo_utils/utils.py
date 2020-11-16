@@ -1,9 +1,13 @@
-from django.conf import settings
-import rest_framework.pagination as pagination
-from cryptography.fernet import Fernet
-from django.utils.crypto import get_random_string
 import datetime
-from decimal import *
+from decimal import Decimal, ROUND_HALF_UP, getcontext
+
+from cryptography.fernet import Fernet
+from django.conf import settings
+from django.utils.crypto import get_random_string
+
+round_context = getcontext()
+round_context.rounding = ROUND_HALF_UP
+
 from distutils.util import strtobool
 from dateutil.parser import parse
 import logging
@@ -28,8 +32,9 @@ def listfetchall(cursor):
 
 
 # allow for later re-implementation with adjustable rounding
-def currency_round(amount):
-    return round(amount, 2)
+def currency_round(x, digits=2, precision=5):
+    tmp = round(Decimal(x), precision)
+    return float(tmp.__round__(digits))
 
 
 def accounting_format(amount, currency_code=''):
@@ -223,12 +228,12 @@ def get_as_tags(bundle_name, extension=None, app=None, attrs=''):
     for chunk in bundle:
         if chunk['name'].endswith(('.js', '.js.gz')):
             tags.append((
-                '<script type="text/javascript" src="{0}" {1}></script>'
-            ).format(chunk['url'], attrs))
+                            '<script type="text/javascript" src="{0}" {1}></script>'
+                        ).format(chunk['url'], attrs))
         elif chunk['name'].endswith(('.css', '.css.gz')):
             tags.append((
-                '<link type="text/css" href="{0}" rel="stylesheet" {1}/>'
-            ).format(chunk['url'], attrs))
+                            '<link type="text/css" href="{0}" rel="stylesheet" {1}/>'
+                        ).format(chunk['url'], attrs))
     return tags
 
 
